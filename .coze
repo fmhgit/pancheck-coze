@@ -6,5 +6,5 @@ build = ["bash", "-c", "cd pancheck && GOPROXY=https://goproxy.cn,direct go buil
 run = ["bash", "-c", "./main"]
 
 [deploy]
-build = ["bash", "-c", "ls -la main && chmod +x main && echo 'Binary ready'"]
+build = ["bash", "-c", "ls -la main && chmod +x main && ln -sf pancheck/static static && echo 'Build ready'"]
 run = ["bash", "-c", "./main"]
