@@ -1,13 +1,11 @@
 [project]
-entrypoint = "server.js"
+entrypoint = "pancheck/bin/main"
 requires = ["nodejs-24"]
 
 [dev]
-build = ["bash", ".cozeproj/scripts/dev_build.sh"]
-run = ["bash", ".cozeproj/scripts/dev_run.sh"]
-deps = ["git"] # -> apt install git
+build = ["bash", "-c", "export PATH=/usr/local/go/bin:$PATH && cd pancheck && go build -o bin/main ./cmd/api"]
+run = ["bash", "-c", "export PATH=/usr/local/go/bin:$PATH && cd pancheck && nohup ./bin/main > /tmp/pancheck.log 2>&1 &"]
 
 [deploy]
-build = ["bash", ".cozeproj/scripts/deploy_build.sh"]
-run = ["bash", ".cozeproj/scripts/deploy_run.sh"]
-deps = ["git"] # -> apt install git
+build = ["bash", "-c", "wget -q https://go.dev/dl/go1.23.5.linux-amd64.tar.gz -O /tmp/go.tar.gz && tar -C /usr/local -xzf /tmp/go.tar.gz && export PATH=/usr/local/go/bin:$PATH && cd pancheck && go build -o bin/main ./cmd/api"]
+run = ["bash", "-c", "export PATH=/usr/local/go/bin:$PATH && cd pancheck && ./bin/main 2>&1 | tee -a /tmp/pancheck.log"]
