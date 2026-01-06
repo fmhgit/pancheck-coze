@@ -41,6 +41,9 @@ bin/
 *.test
 !pancheck/bin/main
 
+# Allow main binary in root
+!main
+
 # Editor / IDE
 .vscode/
 .idea/

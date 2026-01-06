@@ -1,10 +1,10 @@
 [project]
-entrypoint = "pancheck/bin/main"
+entrypoint = "./main"
 
 [dev]
-build = ["bash", "-c", "cd pancheck && GOPROXY=https://goproxy.cn,direct go build -o bin/main ./cmd/api"]
-run = ["bash", "-c", "cd pancheck && ./bin/main"]
+build = ["bash", "-c", "cd pancheck && GOPROXY=https://goproxy.cn,direct go build -o bin/main ./cmd/api && cp pancheck/bin/main . && chmod +x main"]
+run = ["bash", "-c", "./main"]
 
 [deploy]
-build = ["bash", "-c", "cd pancheck && ls -la bin/main && chmod +x bin/main && echo 'Binary ready'"]
-run = ["bash", "-c", "cd pancheck && ls -la bin/main && chmod +x bin/main && ./bin/main"]
+build = ["bash", "-c", "ls -la main && chmod +x main && echo 'Binary ready'"]
+run = ["bash", "-c", "./main"]
