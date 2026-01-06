@@ -6,5 +6,5 @@ build = ["bash", "-c", "cd pancheck && GOPROXY=https://goproxy.cn,direct go buil
 run = ["bash", "-c", "cd pancheck && ./bin/main"]
 
 [deploy]
-build = ["bash", "-c", "echo 'Build completed - using pre-compiled binary'"]
-run = ["bash", "-c", "cd pancheck && ./bin/main"]
+build = ["bash", "-c", "cd pancheck && ls -la bin/main && chmod +x bin/main && echo 'Binary ready'"]
+run = ["bash", "-c", "cd pancheck && ls -la bin/main && chmod +x bin/main && ./bin/main"]
