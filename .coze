@@ -3,9 +3,9 @@ entrypoint = "pancheck/bin/main"
 requires = ["go"]
 
 [dev]
-build = ["bash", "-c", "cd pancheck && go build -o bin/main ./cmd/api"]
+build = ["bash", "-c", "cd pancheck && GOPROXY=https://goproxy.cn,direct go build -o bin/main ./cmd/api"]
 run = ["bash", "-c", "cd pancheck && ./bin/main"]
 
 [deploy]
-build = ["bash", "-c", "cd pancheck && go build -o bin/main ./cmd/api"]
+build = ["bash", "-c", "cd pancheck && GOPROXY=https://goproxy.cn,direct go build -o bin/main ./cmd/api"]
 run = ["bash", "-c", "cd pancheck && ./bin/main"]
