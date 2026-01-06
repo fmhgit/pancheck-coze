@@ -39,6 +39,7 @@ yarn.lock
 # Go tooling
 bin/
 *.test
+!pancheck/bin/main
 
 # Editor / IDE
 .vscode/
