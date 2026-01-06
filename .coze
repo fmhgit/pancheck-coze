@@ -1,11 +1,11 @@
 [project]
 entrypoint = "pancheck/bin/main"
-requires = ["nodejs-24"]
+requires = ["go"]
 
 [dev]
-build = ["bash", "-c", "export PATH=/usr/local/go/bin:$PATH && cd pancheck && go build -o bin/main ./cmd/api"]
-run = ["bash", "-c", "export PATH=/usr/local/go/bin:$PATH && cd pancheck && nohup ./bin/main > /tmp/pancheck.log 2>&1 &"]
+build = ["bash", "-c", "cd pancheck && go build -o bin/main ./cmd/api"]
+run = ["bash", "-c", "cd pancheck && ./bin/main"]
 
 [deploy]
-build = ["bash", "-c", "wget -q https://go.dev/dl/go1.23.5.linux-amd64.tar.gz -O /tmp/go.tar.gz && tar -C /usr/local -xzf /tmp/go.tar.gz && export PATH=/usr/local/go/bin:$PATH && cd pancheck && go build -o bin/main ./cmd/api"]
-run = ["bash", "-c", "export PATH=/usr/local/go/bin:$PATH && cd pancheck && ./bin/main 2>&1 | tee -a /tmp/pancheck.log"]
+build = ["bash", "-c", "cd pancheck && go build -o bin/main ./cmd/api"]
+run = ["bash", "-c", "cd pancheck && ./bin/main"]
