@@ -44,6 +44,9 @@ bin/
 # Allow main binary in root
 !main
 
+# Ignore static symlink (will be created at runtime)
+static
+
 # Editor / IDE
 .vscode/
 .idea/
